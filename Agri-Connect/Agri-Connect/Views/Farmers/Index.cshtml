@@ -1,0 +1,71 @@
+@model IEnumerable<Farmer>
+@{
+    ViewData["Title"] = "Farmers";
+    var q = ViewData["Q"] as string;
+}
+
+@if (TempData["NewFarmerPassword"] is string tempPassword)
+{
+    <div class="alert ac-alert-note" role="alert">
+        <strong>Farmer account created.</strong> Pass these sign-in details to the farmer securely. The password is shown only once.<br />
+        Email: <code>@TempData["NewFarmerEmail"]</code>
+        &nbsp; Temporary password: <code>@tempPassword</code>
+    </div>
+}
+
+<div class="ac-page-head">
+    <div>
+        <h1 class="ac-title">Farmers</h1>
+        <p class="ac-muted mb-0">Everyone registered in the directory.</p>
+    </div>
+    <a class="btn btn-primary" asp-action="Create">Add farmer</a>
+</div>
+
+<form method="get" class="ac-filter row g-3 align-items-end">
+    <div class="col-md-8">
+        <label for="q" class="form-label">Search</label>
+        <input id="q" name="q" value="@q" class="form-control" placeholder="Name, email or location" />
+    </div>
+    <div class="col-md-4 d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Search</button>
+        @if (!string.IsNullOrWhiteSpace(q))
+        {
+            <a class="btn btn-outline-secondary" asp-action="Index">Clear</a>
+        }
+    </div>
+</form>
+
+<div class="ac-table-wrap">
+    @if (!Model.Any())
+    {
+        <div class="ac-empty">@(string.IsNullOrWhiteSpace(q) ? "No farmers yet." : "No farmers match your search.")</div>
+    }
+    else
+    {
+        <table class="ac-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Location</th>
+                    <th><span class="visually-hidden">Actions</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="fw-bold">@item.Name</td>
+                        <td>@item.Email</td>
+                        <td>@item.Location</td>
+                        <td class="ac-actions">
+                            <a asp-action="Details" asp-route-id="@item.Id">Products</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

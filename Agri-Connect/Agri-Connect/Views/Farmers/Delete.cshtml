@@ -1,0 +1,17 @@
+@model Farmer
+@{
+    ViewData["Title"] = "Delete farmer";
+    var productCount = (int)(ViewData["ProductCount"] ?? 0);
+}
+
+<div class="ac-narrow">
+    <h1 class="ac-title mb-4">Delete farmer?</h1>
+    <div class="ac-card">
+        <p>This permanently removes <strong>@Model.Name</strong> (@Model.Email), their sign-in account and
+            <strong>@productCount</strong> product@(productCount == 1 ? "" : "s"). It can't be undone.</p>
+        <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-flex gap-2">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+        </form>
+    </div>
+</div>

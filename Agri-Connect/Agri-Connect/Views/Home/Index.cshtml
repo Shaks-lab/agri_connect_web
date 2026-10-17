@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="ac-hero">
+    <div class="ac-hero-copy">
+        <p class="ac-eyebrow">Farmers and field staff, one place</p>
+        <h1>Fresh from the field, listed in minutes.</h1>
+        <p class="ac-lead">Agri-Connect lets farmers publish their produce and lets employees keep the farmer directory accurate and up to date.</p>
+        <div class="d-flex gap-3 flex-wrap">
+            @if (User.IsInRole("Employee"))
+            {
+                <a class="btn btn-primary" asp-controller="Farmers" asp-action="Index">Go to farmers</a>
+            }
+            else if (User.IsInRole("Farmer"))
+            {
+                <a class="btn btn-primary" asp-controller="Products" asp-action="Index">Go to my products</a>
+            }
+            else
+            {
+                <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Login">Log in</a>
+                <a class="btn btn-outline-primary" asp-area="Identity" asp-page="/Account/Register">Create an account</a>
+            }
+        </div>
+    </div>
+    <div class="ac-hero-cards">
+        <section class="ac-role-card">
+            <h2>For farmers</h2>
+            <p>Add products with a price, category and production date, and see everything you have listed.</p>
+        </section>
+        <section class="ac-role-card ac-dark">
+            <h2>For employees</h2>
+            <p>Register new farmers and keep their names, emails and locations in one directory.</p>
+        </section>
+    </div>
+</section>

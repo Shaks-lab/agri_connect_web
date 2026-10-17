@@ -1,0 +1,91 @@
+/* Agri-Connect design: forest green, harvest-yellow accent, soft off-white ground. */
+:root {
+  --ink: #14261E;
+  --green: #1F5A3F;
+  --green-dark: #174732;
+  --tint: #E4EFE6;
+  --bg: #F5F7F2;
+  --line: #D5DDD2;
+  --muted: #566A5F;
+  --amber: #F2C14E;
+  --font-head: 'Bricolage Grotesque', Arial, sans-serif;
+  --font-body: 'DM Sans', Arial, sans-serif;
+}
+
+html { font-size: 16px; position: relative; min-height: 100%; }
+body {
+  margin: 0; min-height: 100vh; display: flex; flex-direction: column;
+  background: var(--bg); color: var(--ink); font-family: var(--font-body);
+}
+h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 700; }
+a { color: var(--green); }
+a:hover { color: var(--ink); }
+.container { max-width: 1200px; }
+.ac-main { flex: 1; padding-top: 40px; padding-bottom: 56px; }
+.ac-muted { color: var(--muted); }
+.ac-title { font-size: 2.25rem; margin: 0 0 4px; }
+
+/* Header / navigation */
+.ac-nav { background: #fff; border-bottom: 1px solid var(--line); padding: 0; }
+.ac-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-head); font-weight: 700; font-size: 1.375rem; color: var(--ink); }
+.ac-brand:hover { color: var(--ink); }
+.ac-nav .nav-link { color: var(--ink); font-weight: 500; padding: .9rem .9rem; border-bottom: 3px solid transparent; }
+.ac-nav .nav-link.active { color: var(--green); font-weight: 700; border-bottom-color: var(--amber); }
+.ac-nav .nav-link:hover { color: var(--green); }
+.ac-chip { padding: .35rem .75rem; background: var(--tint); color: var(--green); border-radius: 999px; font-size: .875rem; font-weight: 500; }
+.ac-nav .btn-link { color: var(--muted); font-weight: 500; text-decoration: none; padding: .9rem .9rem; }
+
+/* Buttons */
+.btn { font-weight: 700; border-radius: .5rem; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+.btn-sm { min-height: 36px; padding: 0 .75rem; }
+.btn-primary { background: var(--green); border-color: var(--green); color: #fff; }
+.btn-primary:hover, .btn-primary:focus { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
+.btn-outline-primary { color: var(--green); border: 2px solid var(--green); background: #fff; }
+.btn-outline-primary:hover { background: var(--green); border-color: var(--green); color: #fff; }
+.btn-outline-secondary { color: var(--ink); border-color: #AEBBAF; background: #fff; }
+.btn-outline-secondary:hover { background: var(--tint); border-color: var(--green); color: var(--ink); }
+.btn-danger { background: #A32121; border-color: #A32121; }
+.btn:focus-visible, .form-control:focus, .form-select:focus { box-shadow: 0 0 0 .2rem rgba(31, 90, 63, .25); border-color: var(--green); }
+
+/* Forms */
+.form-label { font-weight: 500; font-size: .9rem; margin-bottom: .35rem; }
+.form-control, .form-select { min-height: 44px; border-color: #AEBBAF; border-radius: .5rem; }
+textarea.form-control { min-height: 96px; }
+.form-control:disabled { background: #EEF2EA; }
+
+/* Cards, tables, page header */
+.ac-card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+.ac-page-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; flex-wrap: wrap; margin-bottom: 24px; }
+.ac-table-wrap { background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow-x: auto; }
+.ac-table { width: 100%; margin: 0; border-collapse: collapse; }
+.ac-table th { padding: 12px 16px; text-align: left; font-size: .8rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.ac-table td { padding: 16px; border-bottom: 1px solid #E4EAE1; vertical-align: top; }
+.ac-table tr:last-child td { border-bottom: 0; }
+.ac-table .ac-actions { white-space: nowrap; text-align: right; }
+.ac-table .ac-actions a, .ac-table .ac-actions button { margin-left: .75rem; font-weight: 500; }
+.ac-empty { padding: 40px 16px; text-align: center; color: var(--muted); }
+.ac-filter { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 16px 20px; margin-bottom: 20px; }
+.ac-auth { max-width: 440px; margin: 16px auto 0; }
+.ac-narrow { max-width: 560px; }
+
+/* Alerts */
+.ac-alert { background: var(--tint); border: 1px solid #BFD6C5; color: var(--ink); border-radius: 12px; }
+.ac-alert-note { background: #FFF6DB; border: 1px solid var(--amber); color: var(--ink); border-radius: 12px; }
+.ac-alert-note code { color: var(--ink); background: #fff; padding: .1rem .4rem; border-radius: 6px; font-size: 1rem; user-select: all; }
+
+/* Home */
+.ac-hero { display: flex; gap: 56px; align-items: center; flex-wrap: wrap; padding: 32px 0; }
+.ac-hero-copy { flex: 1 1 440px; }
+.ac-hero-cards { flex: 1 1 400px; display: flex; flex-direction: column; gap: 16px; }
+.ac-eyebrow { margin: 0 0 16px; font-weight: 700; color: var(--green); letter-spacing: .06em; text-transform: uppercase; font-size: .875rem; }
+.ac-hero h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); line-height: 1.05; margin: 0 0 20px; }
+.ac-lead { font-size: 1.2rem; line-height: 1.55; color: #3F544A; max-width: 520px; margin-bottom: 32px; }
+.ac-role-card { border-radius: 16px; padding: 28px; border: 1px solid var(--line); background: #fff; }
+.ac-role-card h2 { font-size: 1.5rem; margin: 0 0 8px; }
+.ac-role-card p { margin: 0; line-height: 1.55; color: #3F544A; }
+.ac-role-card.ac-dark { background: var(--green); border-color: var(--green); }
+.ac-role-card.ac-dark h2 { color: #fff; }
+.ac-role-card.ac-dark p { color: var(--tint); }
+
+/* Footer */
+.ac-footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: .875rem; text-align: center; }

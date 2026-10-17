@@ -1,0 +1,48 @@
+@model ProductListViewModel
+
+<div class="ac-table-wrap">
+    @if (!Model.Products.Any())
+    {
+        <div class="ac-empty">
+            @(Model.HasFilters ? "No products match these filters." : "No products yet.")
+        </div>
+    }
+    else
+    {
+        <table class="ac-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Produced</th>
+                    @if (Model.ShowActions)
+                    {
+                        <th><span class="visually-hidden">Actions</span></th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model.Products)
+                {
+                    <tr>
+                        <td>
+                            <div class="fw-bold">@p.Name</div>
+                            <div class="ac-muted small">@p.Description</div>
+                        </td>
+                        <td>@p.Category</td>
+                        <td>@p.Price.ToString("C")</td>
+                        <td>@p.ProductionDate.ToString("yyyy-MM-dd")</td>
+                        @if (Model.ShowActions)
+                        {
+                            <td class="ac-actions">
+                                <a asp-controller="Products" asp-action="Edit" asp-route-id="@p.Id">Edit</a>
+                                <a asp-controller="Products" asp-action="Delete" asp-route-id="@p.Id">Delete</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

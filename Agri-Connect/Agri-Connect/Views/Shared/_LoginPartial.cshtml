@@ -1,0 +1,27 @@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav align-items-md-center gap-md-2">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var roleName = User.IsInRole("Employee") ? "Employee" : User.IsInRole("Farmer") ? "Farmer" : null;
+        if (roleName != null)
+        {
+            <li class="nav-item"><span class="ac-chip">@roleName</span></li>
+        }
+        <li class="nav-item">
+            <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage your account">@UserManager.GetUserName(User)</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post">
+                <button type="submit" class="btn btn-link">Log out</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item"><a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Log in</a></li>
+        <li class="nav-item"><a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+    }
+</ul>

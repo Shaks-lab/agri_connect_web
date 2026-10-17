@@ -1,0 +1,15 @@
+@model ProductListViewModel
+@{
+    ViewData["Title"] = "My products";
+}
+
+<div class="ac-page-head">
+    <div>
+        <h1 class="ac-title">My products</h1>
+        <p class="ac-muted mb-0">Everything you currently have listed.</p>
+    </div>
+    <a class="btn btn-primary" asp-action="Create">Add product</a>
+</div>
+
+<partial name="_ProductFilter" model="Model" />
+<partial name="_ProductTable" model="Model" />

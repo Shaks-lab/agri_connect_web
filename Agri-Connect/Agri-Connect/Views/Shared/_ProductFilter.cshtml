@@ -1,0 +1,33 @@
+@model ProductListViewModel
+
+<form method="get" class="ac-filter row g-3 align-items-end">
+    <div class="col-md-3">
+        <label for="q" class="form-label">Search</label>
+        <input id="q" name="q" value="@Model.Q" class="form-control" placeholder="Name or description" />
+    </div>
+    <div class="col-md-3">
+        <label for="category" class="form-label">Category</label>
+        <select id="category" name="category" class="form-select">
+            <option value="">All categories</option>
+            @foreach (var c in Model.Categories)
+            {
+                <option value="@c" selected="@(c == Model.Category)">@c</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2 col-6">
+        <label for="dateFrom" class="form-label">Produced from</label>
+        <input id="dateFrom" name="dateFrom" type="date" value="@Model.DateFrom?.ToString("yyyy-MM-dd")" class="form-control" />
+    </div>
+    <div class="col-md-2 col-6">
+        <label for="dateTo" class="form-label">Produced to</label>
+        <input id="dateTo" name="dateTo" type="date" value="@Model.DateTo?.ToString("yyyy-MM-dd")" class="form-control" />
+    </div>
+    <div class="col-md-2 d-flex gap-2">
+        <button type="submit" class="btn btn-primary">Filter</button>
+        @if (Model.HasFilters)
+        {
+            <a class="btn btn-outline-secondary" href="@Context.Request.Path">Clear</a>
+        }
+    </div>
+</form>

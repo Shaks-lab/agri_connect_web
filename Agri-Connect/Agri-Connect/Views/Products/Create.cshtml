@@ -1,0 +1,19 @@
+@model Product
+@{
+    ViewData["Title"] = "Add product";
+}
+
+<div class="ac-narrow">
+    <h1 class="ac-title mb-4">Add a product</h1>
+    <form asp-action="Create" method="post" class="ac-card">
+        <partial name="_ProductForm" model="Model" />
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Add product</button>
+            <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

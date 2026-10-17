@@ -1,0 +1,19 @@
+@model Product
+@{
+    ViewData["Title"] = "Edit product";
+}
+
+<div class="ac-narrow">
+    <h1 class="ac-title mb-4">Edit product</h1>
+    <form asp-action="Edit" asp-route-id="@Model.Id" method="post" class="ac-card">
+        <partial name="_ProductForm" model="Model" />
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Save changes</button>
+            <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

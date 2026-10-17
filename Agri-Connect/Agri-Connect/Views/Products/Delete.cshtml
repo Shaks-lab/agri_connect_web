@@ -1,0 +1,20 @@
+@model Product
+@{
+    ViewData["Title"] = "Delete product";
+}
+
+<div class="ac-narrow">
+    <h1 class="ac-title mb-4">Delete product?</h1>
+    <div class="ac-card">
+        <p>This will permanently remove <strong>@Model.Name</strong>.</p>
+        <dl class="row mb-4">
+            <dt class="col-sm-4">Category</dt><dd class="col-sm-8">@Model.Category</dd>
+            <dt class="col-sm-4">Price</dt><dd class="col-sm-8">@Model.Price.ToString("C")</dd>
+            <dt class="col-sm-4">Produced</dt><dd class="col-sm-8">@Model.ProductionDate.ToString("yyyy-MM-dd")</dd>
+        </dl>
+        <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-flex gap-2">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+        </form>
+    </div>
+</div>
